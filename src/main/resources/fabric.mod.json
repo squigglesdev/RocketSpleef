@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "rocketspleef",
+  "version": "${version}",
+  "name": "Rocket Spleef",
+  "description": "Configurable server-side mod that brings back the Tumble functionality of rockets from Legacy Console Edition.",
+  "authors": [
+    "Squigglesdev"
+  ],
+  "contact": {
+    "repo": "https://github.com/squigglesdev/RocketSpleef"
+  },
+  "license": "MIT",
+  "icon": "assets/rocketspleef/icon.png",
+  "accessWidener": "rocketspleef.accesswidener",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "dev.squiggles.rocketspleef.client.RocketSpleefClient"
+    ],
+    "main": [
+      "dev.squiggles.rocketspleef.RocketSpleef"
+    ]
+  },
+  "mixins": [
+    "rocketspleef.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
