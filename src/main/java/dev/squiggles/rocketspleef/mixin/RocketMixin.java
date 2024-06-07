@@ -71,11 +71,14 @@ public abstract class RocketMixin {
     @Inject(method = "onEntityHit", at = @At("HEAD"))
     public void onEntityHit(EntityHitResult entityHitResult, CallbackInfo ci) {
         FireworkRocketEntity instance = (FireworkRocketEntity) (Object) this;
-        LivingEntity entity = (LivingEntity) entityHitResult.getEntity();
-
-        if (entity instanceof PlayerEntity) {
-            entity.takeKnockback(0.5, instance.getX() - entity.getX(), instance.getZ() - entity.getZ());
-            entity.damage(instance.getDamageSources().fireworks(instance, (instance).getOwner()), 1.0f);
+        try {
+            LivingEntity entity = (LivingEntity) entityHitResult.getEntity();
+            if (entity instanceof PlayerEntity) {
+                entity.takeKnockback(0.5, instance.getX() - entity.getX(), instance.getZ() - entity.getZ());
+                entity.damage(instance.getDamageSources().fireworks(instance, (instance).getOwner()), 1.0f);
+            }
+        } catch (ClassCastException e) {
+            System.out.println(e);
         }
     }
 }
